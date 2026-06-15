@@ -7,7 +7,7 @@ func TestGetCommands(t *testing.T) {
 	commands := getCommands()
 
 	// 2. Define the exact keys we expect to exist
-	expectedKeys := []string{"exit", "help"}
+	expectedKeys := []string{"exit", "help", "map", "mapb"}
 
 	// 3. Verify the map length matches expected keys
 	if len(commands) != len(expectedKeys) {
@@ -41,7 +41,7 @@ func TestGetCommands(t *testing.T) {
 
 func TestCommandHelpExecution(t *testing.T) {
 	// We can safely invoke commandHelp because it only prints to console
-	err := commandHelp()
+	err := commandHelp(&config{})
 	if err != nil {
 		t.Errorf("commandHelp returned an unexpected error: %v", err)
 	}
