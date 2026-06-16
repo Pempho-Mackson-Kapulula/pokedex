@@ -38,7 +38,7 @@ func main() {
 				fmt.Printf("failed to execute command: %v\n", err)
 			}
 		} else {
-			fmt.Printf("Unknown command")
+			fmt.Printf("Unknown command\n")
 		}
 	}
 }
