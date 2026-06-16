@@ -14,5 +14,6 @@ func commandHelp(cfg *config, args ...string) error {
 	}
 
 	fmt.Println("")
+	fmt.Println("Press Ctrl + D to exit quickly")
 	return nil
 }
