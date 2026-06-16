@@ -24,7 +24,8 @@ func commandCatch(cfg *config, args ...string)error{
 
 	if catchProbability < threshold{
 		cfg.pokedex[pokemonName] = res	
-		fmt.Printf("%v was caught! \n", pokemonName)
+		fmt.Printf("%v was caught!\n", pokemonName)
+		fmt.Println("You may now inspect it with the inspect command")
 	}else{
 		fmt.Printf("%v escaped! \n", pokemonName)
 	}
