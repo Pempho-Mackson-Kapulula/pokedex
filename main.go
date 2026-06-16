@@ -11,9 +11,11 @@ import (
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-
+	timeout := 5 * time.Second
+	cacheIntervalTime := 5 * time.Minute
 	cfg := &config{
-		pokeapiClient: pokeapi.NewClient(5 * time.Second),
+		pokeapiClient: pokeapi.NewClient(timeout,cacheIntervalTime),
+		pokedex: make(map[string]pokeapi.PokemonData),
 	}
 
 
@@ -28,8 +30,9 @@ func main() {
 		}
 
 		command := cleanedInput[0]
+		args := cleanedInput[1:]
 		if cmd, exists := getCommands()[command]; exists {
-			err := cmd.callback(cfg)
+			err := cmd.callback(cfg, args...)
 
 			if err != nil {
 				fmt.Printf("failed to execute command: %v\n", err)
